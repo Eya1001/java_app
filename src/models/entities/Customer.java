@@ -9,6 +9,14 @@ public class Customer extends Person{
         super(id, cin, name, familyName, phone, email);
     }
 
+    public Customer(String cin, String name, String familyName, String phone, String email) {
+        super(cin, name, familyName, phone, email, "customer");
+    }
+
+    public Customer(int id, String cin, String name, String familyName, String phone, String email, String typePerson) {
+        super(id, cin, name, familyName, phone, email, typePerson);
+    }
+
     @Override
     public Customer save() throws SQLException {
         String query = String.format(

@@ -8,8 +8,13 @@ public class Course {
     private int id;
     private String label;
     private String category;
-    Course(int id, String label, String category){
+    public Course(int id, String label, String category){
         this.id = id;
+        this.label = label;
+        this.category = category;
+    }
+
+    public Course(String label, String category){
         this.label = label;
         this.category = category;
     }

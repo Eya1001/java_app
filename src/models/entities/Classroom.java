@@ -6,19 +6,18 @@ import java.sql.SQLException;
 
 public class Classroom {
     private int id;
-    private int number;
+    private int num;
     private int availableChairsNumber;
-
-    public Classroom(int id , int number ,int availableChairsNumber)
+    public Classroom(int id , int num ,int availableChairsNumber)
     {
         this.id=id;
-        this.number=number;
+        this.num=num;
         this.availableChairsNumber=availableChairsNumber;
     }
 
-    public Classroom(int number ,int availableChairsNumber)
+    public Classroom(int num ,int availableChairsNumber)
     {
-        this.number=number;
+        this.num=num;
         this.availableChairsNumber=availableChairsNumber;
     }
 
@@ -31,12 +30,12 @@ public class Classroom {
         this.id = id;
     }
 
-    public int getNumber() {
-        return number;
+    public int getNum() {
+        return num;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public int getAvailableChairsNumber() {
@@ -49,8 +48,8 @@ public class Classroom {
 
     public Classroom save() throws SQLException {
         String query = String.format(
-                "INSERT INTO classrooms (number,availableChairsNumber) VALUES (%d, %d)",
-                getNumber(), getAvailableChairsNumber()
+                "INSERT INTO classrooms (number, availableChairsNumber) VALUES (%d, %d)",
+                getNum(), getAvailableChairsNumber()
         );
         int id = MyConnection.executeCreateQuery(query);
         this.setId(id);
