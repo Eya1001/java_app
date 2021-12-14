@@ -2,6 +2,7 @@ package services;
 
 import models.entities.Customer;
 import models.entities.Person;
+import models.entities.Trainer;
 import models.repositories.PersonRepository;
 import models.repositories.Repository;
 
@@ -13,8 +14,10 @@ public class PersonService extends Service<Person>{
         super();
         this.repository = new PersonRepository();
     }
-
-    public List<Customer> findAll(){
+    public List<Trainer> findTrainers(){
+        return ((PersonRepository) repository).findTrainers();
+    }
+    public List<Customer> findCustomers(){
         return ((PersonRepository) repository).findCustomers();
     }
 }

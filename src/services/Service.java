@@ -7,7 +7,7 @@ import java.util.List;
 public class Service<T>{
     protected Repository<T> repository;
     public Service(){}
-    public List<T> list(){
+    public List<T> findAll(){
         return this.repository.findAll();
     }
 

@@ -9,6 +9,10 @@ public class Trainer extends Person{
         super(id, cin, name, familyName, phone, email, "trainer");
     }
 
+    public Trainer(String cin, String name, String familyName, String phone, String email) {
+        super(cin, name, familyName, phone, email, "trainer");
+    }
+
     @Override
     public Trainer save() throws SQLException {
         String query = String.format(

@@ -8,8 +8,6 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class CustomerController extends JFrame {
     static DefaultTableModel model = new DefaultTableModel();
     private final static String[] columnNames = {"id customer", "name customer", "family name customer", "phone customer",
             "email customer"};
-    private static Object[] data = new Object[5];
+    private static final Object[] data = new Object[5];
     private final static JTable dataTable = new JTable();
     static {
         dataTable.setSize(600, 400);
@@ -62,12 +60,7 @@ public class CustomerController extends JFrame {
         JPanel actionPanel = new JPanel(new GridLayout(1, 2));
         JButton resetButton = new JButton("reset");
         JButton addButton = new JButton("create customer");
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                add();
-            }
-        });
+        addButton.addActionListener(e -> add());
         actionPanel.add(resetButton);
         actionPanel.add(addButton);
         customerForm.add(actionPanel);
