@@ -19,7 +19,7 @@ public class Trainer extends Person{
                 "INSERT INTO persons (cin, name, familyName, phone, email, typePerson) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
                 getCin(), getName(), getFamilyName(), getPhone(), getEmail(), "trainer"
         );
-        int id = MyConnection.executeCreateQuery(query);
+        int id = MyConnection.executeCreateQuery(query) + 1;
         this.setId(id);
         return this;
     }

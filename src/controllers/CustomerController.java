@@ -1,6 +1,7 @@
 package controllers;
 
 import models.entities.Customer;
+import models.entities.Person;
 import services.PersonService;
 import widgets.LabelTextField;
 
@@ -76,7 +77,7 @@ public class CustomerController extends JFrame {
         this.setVisible(true);
     }
 
-    public void addRow(Customer customer){
+    public void addRow(Person customer){
         data[0] = customer.getId();
         data[1] = customer.getName();
         data[2] = customer.getFamilyName();
@@ -86,7 +87,7 @@ public class CustomerController extends JFrame {
     }
 
     public void get(){
-        List<Customer> customers = personService.findAll();
+        List<Person> customers = personService.findAll();
         customers.forEach(this::addRow);
     }
 

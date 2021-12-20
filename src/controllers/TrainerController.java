@@ -12,12 +12,17 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class TrainerController extends JFrame {
+    /*
+    this is the Trainer controller, it'll handle the communication between the trainer service and the screen
+    of the trainer crud, it'll render the screen and do the actions based on the events and the significations of
+    the button or mouse events.
+     */
     private final static PersonService personService = new PersonService();
-    static DefaultTableModel model = new DefaultTableModel();
+    private static final DefaultTableModel model = new DefaultTableModel();// the table that displays all the trainers
     private final static String[] columnNames = {"id Trainer", "name Trainer", "family name Trainer", "phone Trainer",
-            "email Trainer"};
-    private static final Object[] data = new Object[5];
-    private final static JTable dataTable = new JTable();
+            "email Trainer"};// the columns' names of the trainers
+    private static final Object[] data = new Object[5]; // the data of the trainers serialization
+    private final static JTable dataTable = new JTable(); // the table of the trainers
     static {
         dataTable.setSize(600, 400);
         model.setColumnIdentifiers(columnNames);
@@ -76,12 +81,16 @@ public class TrainerController extends JFrame {
         this.setVisible(true);
     }
 
-    public void addRow(Trainer Trainer){
-        data[0] = Trainer.getId();
-        data[1] = Trainer.getName();
-        data[2] = Trainer.getFamilyName();
-        data[3] = Trainer.getPhone();
-        data[4] = Trainer.getEmail();
+    public void addRow(Trainer trainer){
+        /*
+        the data class attribute will serialize the object class to a understandable object to the screen, but the model
+        is the attribute who handle the mapping of the values of the data to the specified column
+         */
+        data[0] = trainer.getId();
+        data[1] = trainer.getName();
+        data[2] = trainer.getFamilyName();
+        data[3] = trainer.getPhone();
+        data[4] = trainer.getEmail();
         model.addRow(data);
     }
 
@@ -91,10 +100,13 @@ public class TrainerController extends JFrame {
     }
 
     public void add(){
-        Trainer Trainer = new Trainer(cin.getText(), name.getText(), familyName.getText(), phone.getText(), email.getText());
+        // this method will add the trainer to the database based on the method save implemented in the class Trainer
+        // after adding the trainer to the database we will add the new trainer to the datatable using the addRow method
+        Trainer trainer = new Trainer(cin.getText(), name.getText(),
+                familyName.getText(), phone.getText(), email.getText());
         try {
-            Trainer.save();
-            addRow(Trainer);
+            trainer.save();
+            addRow(trainer);
         } catch (SQLException e) {
             e.printStackTrace();
         }
